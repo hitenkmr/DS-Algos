@@ -100,6 +100,7 @@ extension AVLTree {
         }
     }
     
+    //LL Rotation
     fileprivate func RRRotationOn(node : inout AVLNode?) {
         let p = node
         let pr = p?.rightChild
@@ -114,6 +115,10 @@ extension AVLTree {
         if root == p {
             root = pr
         }
+    }
+    
+    fileprivate func LRRotation(node : AVLNode?) {
+        
     }
 }
 

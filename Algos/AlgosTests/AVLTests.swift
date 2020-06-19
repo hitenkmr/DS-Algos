@@ -45,4 +45,10 @@ class AVLTests: XCTestCase {
         XCTAssertTrue(tree.balanceFactor(node: root) == 0)
         XCTAssertTrue(root?.data == 20)
     }
+    
+    func test_treeIsUnbalanced() {
+        let tree = AVLTree.init()
+        let root = tree.build(with: [30,10,20])
+        XCTAssertTrue(tree.balanceFactor(node: root) > 1)
+    }
  }
