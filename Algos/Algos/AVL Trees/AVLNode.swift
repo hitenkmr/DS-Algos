@@ -8,19 +8,19 @@
 
 import Foundation
 
-class AVLNode : Equatable {
+class AVLNode<T : Comparable> : Equatable {
     static func == (lhs: AVLNode, rhs: AVLNode) -> Bool {
         return lhs.data == rhs.data && lhs.leftChild == rhs.leftChild && lhs.rightChild == rhs.rightChild
     }
     
-    internal init(data: Int, leftChild: AVLNode? = nil, rightChild: AVLNode? = nil, height: Int) {
+    internal init(data: T, leftChild: AVLNode? = nil, rightChild: AVLNode? = nil, height: Int) {
         self.data = data
         self.leftChild = leftChild
         self.rightChild = rightChild
         self.height = height
     }
     
-    var data : Int
+    var data : T
     var leftChild : AVLNode?
     var rightChild : AVLNode?
     var height : Int

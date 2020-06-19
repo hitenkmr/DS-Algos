@@ -8,61 +8,62 @@
 
 import Foundation
 
-class AVLTree {
+class AVLTree<T : Comparable> {
     
-    var root : AVLNode?
+    var root : AVLNode<T>?
     
     var isEmpty : Bool {
         return root == nil
     }
     
-    var leftChild : AVLNode? {
+    var leftChild : AVLNode<T>? {
         get {
             return self.root?.leftChild
         }
     }
     
-    var rightChild : AVLNode? {
+    var rightChild : AVLNode<T>? {
         get {
             return self.root?.rightChild
         }
     }
     
-    func NodeHeight(node : AVLNode?) -> Int {
+    func NodeHeight(node : AVLNode<T>?) -> Int {
         let hl = (node != nil && node?.leftChild != nil) ? node!.leftChild!.height : 0
         let hr = (node != nil && node?.rightChild != nil) ? node!.rightChild!.height : 0
         return hl > hr ? hl+1 : hr+1
     }
     
-    func balanceFactor(node : AVLNode?) -> Int {
+    func balanceFactor(node : AVLNode<T>?) -> Int {
         let hl = (node != nil && node?.leftChild != nil) ? node!.leftChild!.height : 0
         let hr = (node != nil && node?.rightChild != nil) ? node!.rightChild!.height : 0
         return hl-hr
     }
     
     //using recursion
-    func insert(node : inout AVLNode?, data : Int)-> AVLNode? {
-        var rootNode = node
+    func insert(node : inout AVLNode<T>?, data : T)-> AVLNode<T>? {
+        var p = node
         let newNode = AVLNode.init(data: data, height: 1)
-        if rootNode == nil {
-            rootNode = newNode
-            return rootNode
+        if p == nil {
+            p = newNode
+            return p
         }
-        if data < rootNode?.data ?? 0 {
-            var left = rootNode?.leftChild
-            rootNode?.leftChild = self.insert(node: &left, data: data)
+        guard let nodeData = p?.data else { return node }
+        if data < nodeData {
+            var left = p?.leftChild
+            p?.leftChild = self.insert(node: &left, data: data)
         } else {
-            var right = rootNode?.rightChild
-            rootNode?.rightChild = self.insert(node: &right, data: data)
+            var right = p?.rightChild
+            p?.rightChild = self.insert(node: &right, data: data)
         }
-        rootNode?.height = self.NodeHeight(node: rootNode)
-        self.root = rootNode
-        performRotation(node: rootNode)
+        p?.height = self.NodeHeight(node: p)
+        self.root = p
+        performRotation(node: p)
         return self.root
     }
     
-    func build(with array : [Int]) -> AVLNode? {
-        var node : AVLNode?
+    func build(with array : [T]) -> AVLNode<T>? {
+        var node : AVLNode<T>?
         for data in array {
             node = insert(node: &node, data: data)
         }
@@ -74,7 +75,7 @@ extension AVLTree {
     
     //MARK: ROTATION HELPERS
     
-    fileprivate func performRotation(node : AVLNode?)  {
+    fileprivate func performRotation(node : AVLNode<T>?)  {
         var p = node
         if balanceFactor(node: p) == 2 && balanceFactor(node: p?.leftChild) == 1 {
             LLRotationOn(node: &p)
@@ -88,7 +89,7 @@ extension AVLTree {
     }
     
     //LL Rotation
-    fileprivate func LLRotationOn(node : inout AVLNode?) {
+    fileprivate func LLRotationOn(node : inout AVLNode<T>?) {
         let p = node
         let pl = p?.leftChild
         let plr = pl?.rightChild
@@ -107,7 +108,7 @@ extension AVLTree {
     }
     
     //LL Rotation
-    fileprivate func RRRotationOn(node : inout AVLNode?) {
+    fileprivate func RRRotationOn(node : inout AVLNode<T>?) {
         let p = node
         let pr = p?.rightChild
         let prl = pr?.leftChild
@@ -125,14 +126,14 @@ extension AVLTree {
         }
     }
     
-    fileprivate func LRRotationOn(node : inout AVLNode?) {
+    fileprivate func LRRotationOn(node : inout AVLNode<T>?) {
         var pl = node?.leftChild
         self.RRRotationOn(node : &pl)
         node?.leftChild = pl
         self.LLRotationOn(node : &node)
     }
     
-    fileprivate func RLRotation(node : inout AVLNode?) {
+    fileprivate func RLRotation(node : inout AVLNode<T>?) {
         var pr = node?.rightChild
         self.RRRotationOn(node : &pr)
         node?.leftChild = pr
@@ -145,7 +146,7 @@ extension AVLTree {
     //MARK: other functions
     
     //simple method(nor used)
-    func insertNode(with key : Int) {
+    func insertNode(with key : T) {
         let newNode = AVLNode.init(data: key, height: 1)
         if root == nil {
             root = newNode
