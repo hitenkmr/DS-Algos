@@ -13,8 +13,11 @@
 		BE2CCA3C2498C01F00786B21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2CCA3A2498C01F00786B21 /* Main.storyboard */; };
 		BE2CCA3E2498C02800786B21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE2CCA3D2498C02800786B21 /* Assets.xcassets */; };
 		BE2CCA412498C02800786B21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2CCA3F2498C02800786B21 /* LaunchScreen.storyboard */; };
-		BE2CCA4C2498C02900786B21 /* AlgosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CCA4B2498C02900786B21 /* AlgosTests.swift */; };
 		BE2CCA572498C02900786B21 /* AlgosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CCA562498C02900786B21 /* AlgosUITests.swift */; };
+		BE2CCA6B2498D9A800786B21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2CCA6A2498D9A800786B21 /* Constants.swift */; };
+		BEBD278B249CA1AF007CC7E8 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD278A249CA1AF007CC7E8 /* AVLTree.swift */; };
+		BEBD278D249CA88E007CC7E8 /* AVLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD278C249CA88E007CC7E8 /* AVLTests.swift */; };
+		BEBD2793249D4C8A007CC7E8 /* AVLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBD2792249D4C8A007CC7E8 /* AVLNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +47,14 @@
 		BE2CCA402498C02800786B21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE2CCA422498C02800786B21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE2CCA472498C02900786B21 /* AlgosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE2CCA4B2498C02900786B21 /* AlgosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgosTests.swift; sourceTree = "<group>"; };
 		BE2CCA4D2498C02900786B21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE2CCA522498C02900786B21 /* AlgosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2CCA562498C02900786B21 /* AlgosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgosUITests.swift; sourceTree = "<group>"; };
 		BE2CCA582498C02900786B21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE2CCA6A2498D9A800786B21 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BEBD278A249CA1AF007CC7E8 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
+		BEBD278C249CA88E007CC7E8 /* AVLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTests.swift; sourceTree = "<group>"; };
+		BEBD2792249D4C8A007CC7E8 /* AVLNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +105,9 @@
 		BE2CCA332498C01F00786B21 /* Algos */ = {
 			isa = PBXGroup;
 			children = (
-				BE2CCA342498C01F00786B21 /* AppDelegate.swift */,
-				BE2CCA362498C01F00786B21 /* SceneDelegate.swift */,
-				BE2CCA382498C01F00786B21 /* ViewController.swift */,
+				BEBD2789249CA19D007CC7E8 /* AVL Trees */,
+				BE2CCA652498C2CB00786B21 /* LinkedList */,
+				BE2CCA642498C2BA00786B21 /* AppDelegate */,
 				BE2CCA3A2498C01F00786B21 /* Main.storyboard */,
 				BE2CCA3D2498C02800786B21 /* Assets.xcassets */,
 				BE2CCA3F2498C02800786B21 /* LaunchScreen.storyboard */,
@@ -113,8 +119,8 @@
 		BE2CCA4A2498C02900786B21 /* AlgosTests */ = {
 			isa = PBXGroup;
 			children = (
-				BE2CCA4B2498C02900786B21 /* AlgosTests.swift */,
 				BE2CCA4D2498C02900786B21 /* Info.plist */,
+				BEBD278C249CA88E007CC7E8 /* AVLTests.swift */,
 			);
 			path = AlgosTests;
 			sourceTree = "<group>";
@@ -126,6 +132,33 @@
 				BE2CCA582498C02900786B21 /* Info.plist */,
 			);
 			path = AlgosUITests;
+			sourceTree = "<group>";
+		};
+		BE2CCA642498C2BA00786B21 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				BE2CCA342498C01F00786B21 /* AppDelegate.swift */,
+				BE2CCA362498C01F00786B21 /* SceneDelegate.swift */,
+				BE2CCA6A2498D9A800786B21 /* Constants.swift */,
+				BE2CCA382498C01F00786B21 /* ViewController.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		BE2CCA652498C2CB00786B21 /* LinkedList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LinkedList;
+			sourceTree = "<group>";
+		};
+		BEBD2789249CA19D007CC7E8 /* AVL Trees */ = {
+			isa = PBXGroup;
+			children = (
+				BEBD278A249CA1AF007CC7E8 /* AVLTree.swift */,
+				BEBD2792249D4C8A007CC7E8 /* AVLNode.swift */,
+			);
+			path = "AVL Trees";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +229,7 @@
 				TargetAttributes = {
 					BE2CCA302498C01F00786B21 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 					BE2CCA462498C02900786B21 = {
 						CreatedOnToolsVersion = 11.5;
@@ -259,9 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBD2793249D4C8A007CC7E8 /* AVLNode.swift in Sources */,
 				BE2CCA392498C01F00786B21 /* ViewController.swift in Sources */,
 				BE2CCA352498C01F00786B21 /* AppDelegate.swift in Sources */,
 				BE2CCA372498C01F00786B21 /* SceneDelegate.swift in Sources */,
+				BEBD278B249CA1AF007CC7E8 /* AVLTree.swift in Sources */,
+				BE2CCA6B2498D9A800786B21 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE2CCA4C2498C02900786B21 /* AlgosTests.swift in Sources */,
+				BEBD278D249CA88E007CC7E8 /* AVLTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JTX457YL5S;
 				INFOPLIST_FILE = Algos/Info.plist;
@@ -443,6 +481,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiten.Algos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JTX457YL5S;
 				INFOPLIST_FILE = Algos/Info.plist;
@@ -461,6 +502,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiten.Algos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
