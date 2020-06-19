@@ -46,9 +46,21 @@ class AVLTests: XCTestCase {
         XCTAssertTrue(root?.data == 20)
     }
     
-    func test_treeIsUnbalanced() {
+    func test_LRRotation_on_avl_tree_with_dataset1() {
         let tree = AVLTree.init()
         let root = tree.build(with: [30,10,20])
-        XCTAssertTrue(tree.balanceFactor(node: root) > 1)
+        XCTAssertTrue(tree.balanceFactor(node: root) == 0)
+        XCTAssertTrue(root?.data == 20)
+        XCTAssertTrue(root?.leftChild?.data == 10)
+        XCTAssertTrue(root?.rightChild?.data == 30)
+    }
+    
+    func test_RLRotation_on_avl_tree_with_dataset1() {
+        let tree = AVLTree.init()
+        let root = tree.build(with: [30,40,60])
+        XCTAssertTrue(tree.balanceFactor(node: root) == 0)
+        XCTAssertTrue(root?.data == 40)
+        XCTAssertTrue(root?.leftChild?.data == 30)
+        XCTAssertTrue(root?.rightChild?.data == 60)
     }
  }

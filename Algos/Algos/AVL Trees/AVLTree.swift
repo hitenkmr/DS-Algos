@@ -80,6 +80,10 @@ extension AVLTree {
             LLRotationOn(node: &p)
         } else if balanceFactor(node: p) == -2 && balanceFactor(node: p?.rightChild) == -1 {
             RRRotationOn(node: &p)
+        } else if balanceFactor(node: p) == 2 && balanceFactor(node: p?.leftChild) == -1 {
+            LRRotationOn(node: &p)
+        } else if balanceFactor(node: p) == 2 && balanceFactor(node: p?.rightChild) == -1 {
+            LRRotationOn(node: &p)
         }
     }
     
@@ -97,6 +101,8 @@ extension AVLTree {
         
         if root == p {
             root = pl
+        } else {
+            node = pl
         }
     }
     
@@ -114,11 +120,23 @@ extension AVLTree {
         
         if root == p {
             root = pr
+        } else {
+            node = pr
         }
     }
     
-    fileprivate func LRRotation(node : AVLNode?) {
-        
+    fileprivate func LRRotationOn(node : inout AVLNode?) {
+        var pl = node?.leftChild
+        self.RRRotationOn(node : &pl)
+        node?.leftChild = pl
+        self.LLRotationOn(node : &node)
+    }
+    
+    fileprivate func RLRotation(node : inout AVLNode?) {
+        var pr = node?.rightChild
+        self.RRRotationOn(node : &pr)
+        node?.leftChild = pr
+        self.LLRotationOn(node : &node)
     }
 }
 
